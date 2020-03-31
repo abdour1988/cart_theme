@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="utf-8">
+	  <meta name="viewport" content="width=device-width, initial-scale=1">
+	  <title>login lesson</title>
+	  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+	  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" 
+	  integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+	  <script src="main.js"></script>
+	  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+	  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd.popper.min.js"></script>
+	  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+	  
+	  <style>
+        .fa-star {
+			color: green !important;
+		}
+	  </style>
+   </head>
+   
+   
+   <body>
+       <!-- this our navbar-->
+       <nav class="navbar navbar-expand-lg navbar-dark bg-dark justify-content-end fixed-top">
+           <a href="index.html" class="navbar-brand mr-auto"><i class="fas fa-fw fa-shopping-basket"></i>Shopping cart</a>
+           <a href="#menu" class="navbar-toggler" data-toggle="collapse">
+               <span class="navbar-toggler-icon"></span>
+           </a>
+           <div id="menu" class="collapse navbar-collapse">
+               <ul class="navbar-nav ml-auto">
+                   <li class="nav-item">
+                       <a class="nav-link active" href="cart.html"><i class="fas fa-fw fa-shopping-cart"></i>
+					   cart<span class="badge bg-white text-warning mx-1"> 
+	                   <span id="cart"></span></a>
+                   </li>
+               </ul>
+           </div>
+        </nav>
+		<!--body wich contains items of or cart-->
+		<div class='row p-3 my-5 offset-top-5'>
+		    <div class="shadow col-md-3 col-sm-6 text-center m-5 rounded py-3">
+	            <img style="width:100%;" src="images/carousel1.jpeg" class="img-fluid">
+		        <h5>samsung computer</h5>
+		        <span class="fas fa-star"></span>
+		        <span class="fas fa-star"></span>
+		        <span class="fas fa-star"></span>
+		        <span class="fas fa-star"></span>
+		        <span class="far fa-star"></span>
+		        <h6>very interesting computer</h6>
+		        <h3>255$</h3>
+	            <button type="submit" class="btn btn-warning" onclick="addElement1()">add to cart<i class="fas fa-fw fa-shopping-cart"></i></button>
+	        </div>
+			<div class="shadow col-md-3 col-sm-6 text-center m-5 rounded py-3">
+	            <img style="width:100%;" src="images/carousel2.jpeg" class="img-fluid">
+		        <h5>dell computer</h5>
+		        <span class="fas fa-star"></span>
+		        <span class="fas fa-star"></span>
+		        <span class="fas fa-star"></span>
+		        <span class="fas fa-star"></span>
+		        <span class="far fa-star"></span>
+		        <h6>huge computer mark</h6>
+		        <h3>265$</h3>
+	            <button type="submit" class="btn btn-warning" onclick="addElement2()">add to cart<i class="fas fa-fw fa-shopping-cart"></i></button>
+	        </div>
+			<div class="shadow col-md-3 col-sm-6 text-center m-5 rounded py-3">
+	            <img style="width:100%;" src="images/carousel3.jpeg" class="img-fluid">
+		        <h5>hp computer</h5>
+		        <span class="fas fa-star"></span>
+		        <span class="fas fa-star"></span>
+		        <span class="fas fa-star"></span>
+		        <span class="fas fa-star"></span>
+		        <span class="far fa-star"></span>
+		        <h6>japense computer</h6>
+		        <h3>287$</h3>
+	            <button type="submit" class="btn btn-warning" onclick="addElement3()">add to cart<i class="fas fa-fw fa-shopping-cart"></i></button>
+	        </div>
+		</div>
+	
+  
+     <script>
+	     // the count variable counts the items we add to our cart
+	     var count = 0;
+	    if (typeof(Storage) !== "undefined") {
+	        count = Number(localStorage.count) + Number(localStorage.count1) + Number(localStorage.count2);
+		}
+	    document.getElementById("cart").innerHTML = count;
+	 </script>
+ 
+ 
+  
+   
+   
+   
+   </body>
+</html>

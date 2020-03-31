@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="utf-8">
+	  <meta name="viewport" content="width=device-width, initial-scale=1">
+	  <title>login lesson</title>
+	  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+	  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" 
+	  integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+	  <script src="main.js"></script>
+	  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+	  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd.popper.min.js"></script>
+	  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+	  
+	  <style>
+        .fa-star {
+			color: green !important;
+		}
+	  </style>
+   </head>
+   
+   
+   <body>
+       <nav class="navbar navbar-expand-lg navbar-dark bg-dark justify-content-end fixed-top">
+           <a href="index.html" class="navbar-brand mr-auto"><i class="fas fa-fw fa-shopping-basket"></i>Shopping cart</a>
+           <a href="#menu" class="navbar-toggler" data-toggle="collapse">
+               <span class="navbar-toggler-icon"></span>
+           </a>
+           <div id="menu" class="collapse navbar-collapse">
+               <ul class="navbar-nav ml-auto">
+                   <li class="nav-item">
+                       <a class="nav-link active" href="cart.html"><i class="fas fa-fw fa-shopping-cart"></i>
+					   cart<span class="badge bg-white text-warning mx-1"> 
+	                   <span id="cart">0</span></a>
+                   </li>
+               </ul>
+           </div>
+        </nav>
+		<div class="row p-5 my-5 pl-0">
+        <div class="col-md-7">
+	     <h5>My Cart</h5>
+		 <hr>
+		    
+	     </div>
+	<div class="col-md-4 ml-5 py-5 bg-white border rounded h-25">
+	<h5>Cart Details</h5>
+			<hr>
+	   <div class="row">
+	     <div class="col-md-6">
+			<p>item amount</p>
+			<p>chargable deliver</p>
+			<hr>
+			<p>paybable amount</p>
+		 </div>
+		 <div class="col-md-6">
+		    <p id="item">0</p>
+			<p class="text-success">Free</p>
+			<hr>
+			<p id="par">0$<p>
+		 </div>
+	   </div>
+	</div>
+   </div>
+	
+  <script>
+		 var cont = document.querySelector(".col-md-7");
+		 //create the first item 
+    function drawItem () {
+	if (typeof(Storage) !== "undefined") {
+		 var divContainer = document.createElement(localStorage.myDiv);
+		 divContainer.setAttribute("class", "row bg-white border rounded py-3 my-3");
+		 var divCol = document.createElement("div");
+		 divCol.setAttribute("class", "col-md-3");
+		 var image = document.createElement("img");
+		 image.setAttribute("src", localStorage.mysrc);
+		 image.setAttribute("class", "img-fluid");
+		 divCol.appendChild(image);
+		 divContainer.appendChild(divCol);
+		 cont.appendChild(divContainer);
+		 var divCol1 = document.createElement("div");
+		 divCol1.setAttribute("class", "col-md-6");
+		 var head = document.createElement("h5");
+		 head.textContent = localStorage.productName;
+		 var par = document.createElement("p");
+		 par.textContent = localStorage.price + "$";
+		 var button2 = document.createElement("button");
+		 button2.setAttribute("class", "btn btn-warning mx-1");
+		 button2.textContent = "save for later";
+		 var button1 = document.createElement("button");
+		 button1.textContent = "remove";
+		 button1.setAttribute("class", "btn btn-danger mx-1");
+		 divCol1.appendChild(head);
+		 divCol1.appendChild(par);
+		 divCol1.appendChild(button1);
+		 divCol1.insertBefore(button2, button1);
+		 var divCol2 = document.createElement("div");
+		 divCol2.setAttribute("class", "col-md-3");
+		 var button3 = document.createElement("button");
+		 button3.setAttribute("class", "fas fa-minus mx-1");
+		 var inp = document.createElement("input");
+		 inp.setAttribute("type", "text");
+		 inp.setAttribute("value", "1");
+		 var button4 = document.createElement("button");
+		 button4.setAttribute("class", "fas fa-plus mx-1");
+		 inp.setAttribute("class", "form-control w-25 d-inline-block");
+		 divCol2.appendChild(button3);
+		 divCol2.appendChild(inp);
+		 divCol2.appendChild(button4);
+		 divContainer.appendChild(divCol1);
+		 divContainer.appendChild(divCol2);
+		 cont.appendChild(divContainer);
+		 }
+		 button1.addEventListener("click", function () {
+		   if (typeof(Storage) !== "udefined") {
+		       localStorage.setItem("productName", "");
+		       localStorage.setItem("desc", "");
+		       localStorage.setItem("price", "");
+		       localStorage.setItem("mysrc", "");
+			    localStorage.setItem("myDiv", "");
+				localStorage.setItem("count", 0);
+			   alert("pruduct is deleted from your cart");
+			   window.location = "cart.html";
+		   }
+		 });
+		}
+		drawItem();
+		
+		// create the second item
+		 function drawItem1 () {
+	if (typeof(Storage) !== "undefined") {
+		 var divContainer1 = document.createElement(localStorage.myDiv1);
+		 divContainer1.setAttribute("class", "row bg-white border rounded py-3 my-3");
+		 var divCol = document.createElement("div");
+		 divCol.setAttribute("class", "col-md-3");
+		 var image = document.createElement("img");
+		 image.setAttribute("src", localStorage.mysrc1);
+		 image.setAttribute("class", "img-fluid");
+		 divCol.appendChild(image);
+		 divContainer1.appendChild(divCol);
+		 cont.appendChild(divContainer1);
+		 var divCol1 = document.createElement("div");
+		 divCol1.setAttribute("class", "col-md-6");
+		 var head = document.createElement("h5");
+		 head.textContent = localStorage.productName1;
+		 var par = document.createElement("p");
+		 par.textContent = localStorage.price1 + "$";
+		 var button2 = document.createElement("button");
+		 button2.setAttribute("class", "btn btn-warning mx-1");
+		 button2.textContent = "save for later";
+		 var button5 = document.createElement("button");
+		 button5.textContent = "remove";
+		 button5.setAttribute("class", "btn btn-danger mx-1");
+		 divCol1.appendChild(head);
+		 divCol1.appendChild(par);
+		 divCol1.appendChild(button5);
+		 divCol1.insertBefore(button2, button5);
+		 var divCol2 = document.createElement("div");
+		 divCol2.setAttribute("class", "col-md-3");
+		 var button3 = document.createElement("button");
+		 button3.setAttribute("class", "fas fa-minus mx-1");
+		 var inp = document.createElement("input");
+		 inp.setAttribute("type", "text");
+		 inp.setAttribute("value", "1");
+		 var button4 = document.createElement("button");
+		 button4.setAttribute("class", "fas fa-plus mx-1");
+		 inp.setAttribute("class", "form-control w-25 d-inline-block");
+		 divCol2.appendChild(button3);
+		 divCol2.appendChild(inp);
+		 divCol2.appendChild(button4);
+		 divContainer1.appendChild(divCol1);
+		 divContainer1.appendChild(divCol2);
+		 cont.appendChild(divContainer1);
+		 }
+		 button5.addEventListener("click", function () {
+		   if (typeof(Storage) !== "udefined") {
+		       localStorage.setItem("productName1", "");
+		       localStorage.setItem("desc1", "");
+		       localStorage.setItem("price1", "");
+		       localStorage.setItem("mysrc1", "");
+			    localStorage.setItem("myDiv1", "");
+				localStorage.setItem("count1", 0);
+			   alert("pruduct is deleted from your cart");
+			   window.location = "cart.html";
+		   }
+		 });
+		}
+		drawItem1();
+		// create the third item
+			 function drawItem2 () {
+	if (typeof(Storage) !== "undefined") {
+		 var divContainer2 = document.createElement(localStorage.myDiv2);
+		 divContainer2.setAttribute("class", "row bg-white border rounded py-3 my-3");
+		 var divCol = document.createElement("div");
+		 divCol.setAttribute("class", "col-md-3");
+		 var image = document.createElement("img");
+		 image.setAttribute("src", localStorage.mysrc2);
+		 image.setAttribute("class", "img-fluid");
+		 divCol.appendChild(image);
+		 divContainer2.appendChild(divCol);
+		 cont.appendChild(divContainer2);
+		 var divCol1 = document.createElement("div");
+		 divCol1.setAttribute("class", "col-md-6");
+		 var head = document.createElement("h5");
+		 head.textContent = localStorage.productName2;
+		 var par = document.createElement("p");
+		 par.textContent = localStorage.price1 + "$";
+		 var button2 = document.createElement("button");
+		 button2.setAttribute("class", "btn btn-warning mx-1");
+		 button2.textContent = "save for later";
+		 var button6 = document.createElement("button");
+		 button6.textContent = "remove";
+		 button6.setAttribute("class", "btn btn-danger mx-1");
+		 divCol1.appendChild(head);
+		 divCol1.appendChild(par);
+		 divCol1.appendChild(button6);
+		 divCol1.insertBefore(button2, button6);
+		 var divCol2 = document.createElement("div");
+		 divCol2.setAttribute("class", "col-md-3");
+		 var button3 = document.createElement("button");
+		 button3.setAttribute("class", "fas fa-minus mx-1");
+		 var inp = document.createElement("input");
+		 inp.setAttribute("type", "text");
+		 inp.setAttribute("value", "1");
+		 var button4 = document.createElement("button");
+		 button4.setAttribute("class", "fas fa-plus mx-1");
+		 inp.setAttribute("class", "form-control w-25 d-inline-block");
+		 divCol2.appendChild(button3);
+		 divCol2.appendChild(inp);
+		 divCol2.appendChild(button4);
+		 divContainer2.appendChild(divCol1);
+		 divContainer2.appendChild(divCol2);
+		 cont.appendChild(divContainer2);
+		 }
+		 button6.addEventListener("click", function () {
+		   if (typeof(Storage) !== "udefined") {
+		       localStorage.setItem("productName2", "");
+		       localStorage.setItem("desc2", "");
+		       localStorage.setItem("price2", "");
+		       localStorage.setItem("mysrc2", "");
+			    localStorage.setItem("myDiv2", "");
+				localStorage.setItem("count2", 1);
+			   alert("pruduct is deleted from your cart");
+			   window.location = "cart.html";
+		   }
+		 });
+		}
+		drawItem2();
+		
+		
+		var total = 0;
+	    if (typeof(Storage) !== "undefined") {
+	        total = Number(localStorage.price) + Number(localStorage.price1) + Number(localStorage.price2);
+		}
+	    document.getElementById("par").innerHTML = total + "$";
+		
+		var count;
+	    if (typeof(Storage) !== "undefined") {
+	        count = Number(localStorage.count) + Number(localStorage.count1) + Number(localStorage.count2);
+		} else {
+		   count = 0;
+		}
+	    document.getElementById("cart").innerHTML = count;
+		document.getElementById("item").innerHTML = count;
+		  
+  
+  </script>
+ 
+  
+ 
+  
+   
+   
+   
+   </body>
+</html>
